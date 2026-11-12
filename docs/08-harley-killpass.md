@@ -14,4 +14,4 @@
 
 **Verdict (Harley):** don't green-light Circle-as-specced against an M2-100 bar. Can't build around: #1, #3, #5. Must surgically fix: #2, #4. The survivable slice is split-bill-only (short hold = weakest regulator hook, non-terminal loop) with ROSCA pots deferred until compliance + collateral mechanics are designed, not assumed.
 
-*Nimbus archival note: kill #4's "reward-driven retention cluster" is the strongest platform-native signal in this pass — it re-ranks v1.5 monetization toward the FanDrop-style weekly claim ritual, and it is why the MVP ships without expecting any dev-rewards subsidy (see docs/06: that program surface is retired as of 2026-11-12).*
+*Nimbus archival note: kill #4's "reward-driven retention cluster" is the strongest platform-native signal in this pass — it re-ranks v1.5 monetization toward the FanDrop-style weekly claim ritual, and it is why the MVP ships without expecting any dev-rewards subsidy (see docs/07: that program surface is retired as of 2026-11-12).*

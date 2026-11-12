@@ -115,4 +115,4 @@ worldid_web_adoption": "Sign-in / 'human-first web' adoption is broad but mostly
     "Quality bar is high vs long tail: flagship apps are VC-funded teams (Kalshi, Morpho, Credit); a hobby-quality clone won't rank — retention/verified-usage is the scoreboard for both users and rewards (https://news.dextools.io/article/what-is-world-chain-worldcoin-l2-guide-2026)."
   ]
 
-_Salvage note: this file was rebuilt 2026-11-12 after the first push shipped without it (lane-4 JSON tail was malformed and the writer skipped it silently). The 04 slot is now Flux's kill-pass adjudication; the map lives here as 05._
+_Salvage note: rebuilt 2026-11-12 after the first push shipped without it (lane-4 JSON tail malformed; writer skipped silently — caught by the second-pass audit, now in data/). Docs renumbered after Flux took 04/05 slots for adjudications._

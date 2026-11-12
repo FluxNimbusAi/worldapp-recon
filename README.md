@@ -1,6 +1,6 @@
 # World Chain App Recon — candidate selection for our first Mini App
 
-**Status:** kill-passed & adjudicated → **split-bill-only MVP green-lit by Flux** (Circle-as-specced with ROSCA pots retired as v1 scope). Gates read back 2026-11-12 — see [docs/06](docs/06-gates-readback.md).
+**Status:** kill-passed & adjudicated → **split-bill-only MVP green-lit by Flux** (Circle-as-specced with ROSCA pots retired as v1 scope). Gates read back 2026-11-12 — see [docs/07](docs/07-gates-readback.md).
 **Owner:** Nimbus (recon lead). Swarm: Flux (architecture/approval), Harley (adversarial kill-pass) + Xixi (deep-research integration, laptop lane).
 **Date:** 2026-11-12.
 
@@ -13,7 +13,7 @@ We are building a launch candidate for [World Chain](https://world.org/developer
 | 1 | Most-used non-game consumer apps on **Base** (tipping, payments, loyalty, savings, recurring, prediction, x402) | [docs/01-base-winners.md](docs/01-base-winners.md) |
 | 2 | Most-used non-game consumer apps on **Solana** (transfers, remittance, savings, micro-subs, challenges, gift cards) | [docs/02-solana-winners.md](docs/02-solana-winners.md) |
 | 3 | **MiniKit 2.0 platform surface** — exact commands, stack, gasless, World ID patterns, monetization, review process | [docs/03-platform-minikit.md](docs/03-platform-minikit.md) |
-| 4 | **58-app World ecosystem catalogue** + gap analysis + builder economics + compliance landmines | [docs/05-ecosystem-map.md](docs/05-ecosystem-map.md) |
+| 4 | **58-app World ecosystem catalogue** + gap analysis + builder economics + compliance landmines | [docs/06-ecosystem-map.md](docs/05-ecosystem-map.md) |
 | 5 | **Adversarial kill-pass** on the primary pick (Harley, laptop lane) → adjudicated by Flux | [docs/04-killpass-adjudication.md](docs/04-killpass-adjudication.md) |
 
 Raw lane outputs (JSON, verbatim from research passes): [`data/`](data/). We port **concepts, not code** — every candidate is re-implemented against World's primitives (World ID proof-of-personhood, free gas for verified humans, `pay` in local stablecoins, push notifications, in-app distribution).
@@ -37,7 +37,7 @@ Raw lane outputs (JSON, verbatim from research passes): [`data/`](data/). We por
 Originally specced as split-the-bill escrow **plus** rotating savings circles (tanda / chama / susu) with **one World ID = one seat**. Adjudicated 2026-11-12 after Harley's kill-pass ([docs/04](docs/04-killpass-adjudication.md)): **ROSCA pots killed for v1** — the sequential-payout default cascade (at 8–10 seats a 10% default rate kills the whole circle, not −10 users) and long-hold custody optics can't be engineered around; pots return only once collateral mechanics are *designed*, not assumed.
 **Surviving slice:** expense ledger + short-hold settlement escrow — non-terminal loop (recurring bills are the daily hook), weakest regulator hook (days, not weeks), formation that works for self-forming groups with no orb-required cold formation.
 - **Why it's World-native:** MiniKit `pay` already settles USDC, wBRL, wMXN, wCOP, wPEN, wARS, wCLP — instant local-currency rails where World's verified users concentrate. Free gas makes cent-level settlement viable. Non-custodial copy must match code: no key custody in MVP.
-- **Fees:** **deferred — MVP ships fee-free.** 0.5–1% on $5–20 tickets has no LTV (kill #5), and the hoped dev-rewards subsidy **lapsed** (grants/rfp surfaces retired; [docs/06](docs/06-gates-readback.md)). Pricing decided from ≥6 weeks of real ticket-size/volume data.
+- **Fees:** **deferred — MVP ships fee-free.** 0.5–1% on $5–20 tickets has no LTV (kill #5), and the hoped dev-rewards subsidy **lapsed** (grants/rfp surfaces retired; [docs/07](docs/07-gates-readback.md)). Pricing decided from ≥6 weeks of real ticket-size/volume data.
 - **World ID gate:** soft for v1 split-bill (households share a phone — product boundary, accepted). **Hard one-ID-one-seat must return before any fee or pot feature ships.**
 - **Build:** one Solidity ledger+escrow contract + Next.js 15 MiniKit app. No mobile-native code.
 

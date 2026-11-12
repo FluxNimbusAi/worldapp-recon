@@ -1,19 +1,20 @@
 # World Chain App Recon — candidate selection for our first Mini App
 
-**Status:** research complete → 3 finalists selected, awaiting build decision.
-**Owner:** Nimbus (recon lead). Swarm: Flux (architecture/approval), Harley+Xixi (laptop stress-test lane).
+**Status:** kill-passed & adjudicated → **split-bill-only MVP green-lit by Flux** (Circle-as-specced with ROSCA pots retired as v1 scope). Gates read back 2026-11-12 — see [docs/06](docs/06-gates-readback.md).
+**Owner:** Nimbus (recon lead). Swarm: Flux (architecture/approval), Harley (adversarial kill-pass) + Xixi (deep-research integration, laptop lane).
 **Date:** 2026-11-12.
 
 We are building a launch candidate for [World Chain](https://world.org/developers) — an OP-Stack L2 (chain id 480) distributed through the World Money / World App mini-app store to **25M+ verified humans**. Goal: a non-game utility app that is **simple to build, genuinely useful, monetized via micro-fees, and structurally repeat-use**.
 
-## Method (4 parallel recon lanes, ~40 sources)
+## Method (5 recon lanes + adversarial pass, ~40 sources)
 
 | Lane | Scope | Output |
 |---|---|---|
 | 1 | Most-used non-game consumer apps on **Base** (tipping, payments, loyalty, savings, recurring, prediction, x402) | [docs/01-base-winners.md](docs/01-base-winners.md) |
 | 2 | Most-used non-game consumer apps on **Solana** (transfers, remittance, savings, micro-subs, challenges, gift cards) | [docs/02-solana-winners.md](docs/02-solana-winners.md) |
 | 3 | **MiniKit 2.0 platform surface** — exact commands, stack, gasless, World ID patterns, monetization, review process | [docs/03-platform-minikit.md](docs/03-platform-minikit.md) |
-| 4 | **58-app World ecosystem catalogue** + gap analysis + dev-rewards economics + compliance landmines | [docs/04-ecosystem-map.md](docs/04-ecosystem-map.md) |
+| 4 | **58-app World ecosystem catalogue** + gap analysis + builder economics + compliance landmines | [docs/05-ecosystem-map.md](docs/05-ecosystem-map.md) |
+| 5 | **Adversarial kill-pass** on the primary pick (Harley, laptop lane) → adjudicated by Flux | [docs/04-killpass-adjudication.md](docs/04-killpass-adjudication.md) |
 
 Raw lane outputs (JSON, verbatim from research passes): [`data/`](data/). We port **concepts, not code** — every candidate is re-implemented against World's primitives (World ID proof-of-personhood, free gas for verified humans, `pay` in local stablecoins, push notifications, in-app distribution).
 
@@ -32,22 +33,24 @@ Raw lane outputs (JSON, verbatim from research passes): [`data/`](data/). We por
 
 ## The top three we'd bet the farm on
 
-### 1. Circle — group money among verified humans *(primary pick)*
-Split-the-bill escrow **plus** rotating savings circles (tanda / chama / susu) where **one World ID = one seat** and round payouts settle automatically on-chain. Nothing like it exists in the 58-app catalogue (gap confirmed, lane 4), while Base (HyperSplit) and off-chain Splitwise prove the habit, and ROSCA apps run on trust alone for hundreds of millions of users — identity is their only collateral, which is exactly what World ID guarantees.
-- **Why it's World-native:** MiniKit `pay` already settles USDC, wBRL, wMXN, wCOP, wPEN, wARS, wCLP — instant local-currency rails for the remittance-heavy countries where World verified users concentrate. Free gas makes cent-level settlement viable. Non-custodial escrow keeps it out of KYC landmines.
-- **Fees:** 0.5–1% per round settlement, optional redistributed late-fee model.
-- **Retention:** structural — dinner happens monthly, rotation happens weekly. Notifications primitive pings each round.
-- **Build:** one Solidity escrow contract + Next.js 15 MiniKit app. No mobile-native code. Days-to-weeks for this swarm.
+### 1. Circle → **Circle-lite: split-bill among verified humans** *(green-lit v1)*
+Originally specced as split-the-bill escrow **plus** rotating savings circles (tanda / chama / susu) with **one World ID = one seat**. Adjudicated 2026-11-12 after Harley's kill-pass ([docs/04](docs/04-killpass-adjudication.md)): **ROSCA pots killed for v1** — the sequential-payout default cascade (at 8–10 seats a 10% default rate kills the whole circle, not −10 users) and long-hold custody optics can't be engineered around; pots return only once collateral mechanics are *designed*, not assumed.
+**Surviving slice:** expense ledger + short-hold settlement escrow — non-terminal loop (recurring bills are the daily hook), weakest regulator hook (days, not weeks), formation that works for self-forming groups with no orb-required cold formation.
+- **Why it's World-native:** MiniKit `pay` already settles USDC, wBRL, wMXN, wCOP, wPEN, wARS, wCLP — instant local-currency rails where World's verified users concentrate. Free gas makes cent-level settlement viable. Non-custodial copy must match code: no key custody in MVP.
+- **Fees:** **deferred — MVP ships fee-free.** 0.5–1% on $5–20 tickets has no LTV (kill #5), and the hoped dev-rewards subsidy **lapsed** (grants/rfp surfaces retired; [docs/06](docs/06-gates-readback.md)). Pricing decided from ≥6 weeks of real ticket-size/volume data.
+- **World ID gate:** soft for v1 split-bill (households share a phone — product boundary, accepted). **Hard one-ID-one-seat must return before any fee or pot feature ships.**
+- **Build:** one Solidity ledger+escrow contract + Next.js 15 MiniKit app. No mobile-native code.
 
 ### 2. FanDrop — the provably-human fan economy
-Creators price 1–50¢ weekly subs/tips; every "subscriber" is a verified unique human (bot fans, fake engagement and multi-account farmings are structurally impossible). Prior art: DRiP (500k collectors, ~160k daily wallets), Noice ($2.1M GMV, ~90% return rate), Coinbase Base Subscriptions (3-line recurring-charge SDK). Cold-start is the real risk → seed with creators already posting in World Blog/DSCVR. Design note: entitlements are **not NFTs** (NFT purchase buttons are a known review-rejection trigger).
+Creators price 1–50¢ weekly subs/tips; every "subscriber" is a verified unique human (bot fans, fake engagement and multi-account farming structurally impossible). Prior art: DRiP (500k collectors, ~160k daily wallets), Noice ($2.1M GMV, ~90% return rate), Coinbase Base Subscriptions (3-line recurring-charge SDK). Best surviving monetization layer for v1.5 once Circle-lite has users. Design note: entitlements are **not NFTs** (NFT purchase buttons are a known review-rejection trigger).
 
 ### 3. DarePact — commitment contracts between real people
-Stake money on a goal (fitness, habit, deadline); your accountability counterpart must be a distinct verified human — no shill accounts, no self-play. Forfeits go to the completing circle. Prior art: Moonwalk (Binance-Labs-backed), StickK. Rake on forfeits + brand-funded challenge pools. Held back only by gambling-law care: strictly achievement-based, zero chance elements.
+Stake money on a goal; accountability counterpart must be a distinct verified human — no shill accounts, no self-play. Prior art: Moonwalk (Binance-Labs-backed), StickK. Rake on forfeits + brand-funded challenge pools. Gated on gambling-law care (strictly achievement-based, zero chance) and medium-hold custody design.
 
-## Next steps (proposed)
-1. Flux picks the finalist and signs off architecture (Circle MVP spec drafted on approval).
-2. Repo `FluxNimbusAi/circle` — contract first, World Chain Sepolia testnet, then MiniKit UI, then Developer Portal submission.
-3. Verify live dev-rewards pool status at world.org/rfp before budgeting revenue (the $100K/week pilot's 2026 continuation is unconfirmed — lane 4 caution).
+## Roadmap (post-adjudication)
+1. ✅ Finalist picked & scope cut by Flux — split-bill-only, fee-free MVP (docs/04).
+2. Name decision (review rules: no "World", no generic functional terms; "Circle" complies as codename).
+3. Scaffold `FluxNimbusAi/<appname>`: W1 Solidity ledger+settlement contract (World Chain Sepolia) → W2 MiniKit UI (walletAuth, `pay`, notifications) → W3 circle-formation UX + review checklist → W4 Developer Portal submission (final product required, live MiniKit integration required).
+4. Revisit ROSCA pots + fee model only after v1 usage data.
 
-*Built by the FluxNimbusAi agent swarm. Every claim above links to a source in `docs/`; UNVERIFIED items are labeled as such — we publish our uncertainty instead of hiding it.*
+*Built by the FluxNimbusAi agent swarm — PC lane (Nimbus recon, Flux adjudication) + laptop lane (Harley kill-pass, Xixi integration). Every claim links to a source in `docs/`; UNVERIFIED items are labeled as such, and killed features stay documented with their kill reasons. We publish our uncertainty instead of hiding it.*
